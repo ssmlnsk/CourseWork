@@ -140,7 +140,7 @@
          <string notr="true">font: &quot;Comic Sans MS&quot;;</string>
         </property>
         <property name="currentIndex">
-         <number>2</number>
+         <number>5</number>
         </property>
         <widget class="QWidget" name="page_1_for_all">
          <layout class="QVBoxLayout" name="verticalLayout_3">
@@ -1042,6 +1042,44 @@ font: 9pt &quot;Comic Sans MS&quot;;</string>
               </item>
               <item>
                <widget class="QLineEdit" name="edit_title_book"/>
+              </item>
+             </layout>
+            </item>
+            <item>
+             <layout class="QHBoxLayout" name="horizontalLayout_10" stretch="0,100">
+              <item>
+               <widget class="QLabel" name="label_7">
+                <property name="styleSheet">
+                 <string notr="true">background-color: rgb(216, 0, 4);
+color: rgb(255, 255, 255);
+font: 9pt &quot;Comic Sans MS&quot;;</string>
+                </property>
+                <property name="text">
+                 <string>Введите год издания:</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QDateEdit" name="year"/>
+              </item>
+             </layout>
+            </item>
+            <item>
+             <layout class="QHBoxLayout" name="horizontalLayout_28" stretch="0,100">
+              <item>
+               <widget class="QLabel" name="label_29">
+                <property name="styleSheet">
+                 <string notr="true">background-color: rgb(216, 0, 4);
+color: rgb(255, 255, 255);
+font: 9pt &quot;Comic Sans MS&quot;;</string>
+                </property>
+                <property name="text">
+                 <string>Введите количество страниц:</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QSpinBox" name="spin_lists"/>
               </item>
              </layout>
             </item>

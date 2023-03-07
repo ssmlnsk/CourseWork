@@ -63,7 +63,7 @@ class Database:
         cursor.execute("INSERT INTO publishing_house VALUES (NULL, %s)", (name,))
         self.conn.commit()
 
-    def insert_book(self, name, cost, genre, author, ph):
+    def insert_book(self, name, year, lists, cost, genre, author, ph):
         """
         Добавление книги
         :param name: название книги
@@ -73,7 +73,7 @@ class Database:
         :param ph: код издательства
         """
         cursor = self.conn.cursor()
-        cursor.execute("INSERT INTO books VALUES (NULL, %s, %s, %s, %s, %s)", (name, cost, genre, author, ph))
+        cursor.execute("INSERT INTO books VALUES (NULL, %s, %s, %s, %s, %s, %s, %s)", (name, year, lists, cost, genre, author, ph))
         self.conn.commit()
 
     def insert_request(self, number, date, time, client, employee, book):
@@ -155,7 +155,7 @@ class Database:
         cursor.execute(f"UPDATE publishing_house set `Название издательства`='{ph}' WHERE 'Код издательсвта'='{id}'")
         self.conn.commit()
 
-    def update_book(self, id, name, cost, genre, author, ph):
+    def update_book(self, id, name, year, lists, cost, genre, author, ph):
         """
         Обновление книги
         :param id: код книги
@@ -167,8 +167,8 @@ class Database:
         """
         cursor = self.conn.cursor()
         cursor.execute(
-            f"UPDATE books set `Наименование книги`='{name}', `Стоимость`='{cost}', `Жанр`='{genre}', "
-            f"`Автор`='{author}', `Издательство`='{ph}' WHERE 'Код книги'='{id}'")
+            f"UPDATE books set `Наименование книги`='{name}', `Год издания`='{year}', `Количество страниц`='{lists}', "
+            f"`Стоимость`='{cost}', `Жанр`='{genre}', `Автор`='{author}', `Издательство`='{ph}' WHERE 'Код книги'='{id}'")
         self.conn.commit()
 
 # DELETE
@@ -332,7 +332,7 @@ class Database:
             if i[2] is None:
                 clients.append(str(i[0] + ' ' + i[1]))
             else:
-                clients.append(str(i[0] + ' ' + i[1] + ' '))
+                clients.append(str(i[0] + ' ' + i[1] + ' ' + i[2]))
         return clients
 
     def get_genres(self):

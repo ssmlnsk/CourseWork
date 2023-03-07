@@ -156,9 +156,9 @@ class MainWindow(QMainWindow):
         """
         self.table_book.clear()
         rec = self.facade.read_books()
-        self.ui.table_book.setColumnCount(6)
+        self.ui.table_book.setColumnCount(8)
         self.ui.table_book.setRowCount(len(rec))
-        self.ui.table_book.setHorizontalHeaderLabels(['Код книги', 'Название книги', 'Стоимость', 'Жанр', 'Автор', 'Издательство'])
+        self.ui.table_book.setHorizontalHeaderLabels(['Код книги', 'Название книги', 'Год издания', 'Количество страниц', 'Стоимость', 'Жанр', 'Автор', 'Издательство'])
 
         for i, book in enumerate(rec):
             for x, field in enumerate(book):
@@ -250,6 +250,8 @@ class MainWindow(QMainWindow):
         Добавление книги.
         """
         title_book = self.ui.edit_title_book.text()
+        year = self.ui.year.dateTime().toString('yyyy-MM-dd')
+        lists = self.ui.spin_lists.value()
         cost_book = self.ui.spin_cost.value()
         genre = self.facade.get_genre_id(self.ui.comboBox_genre.currentText())
         au = self.ui.comboBox_author.currentText()
@@ -257,7 +259,7 @@ class MainWindow(QMainWindow):
         ph = self.facade.get_ph_id(self.ui.comboBox_ph.currentText())
 
         if title_book != '' and cost_book != '' and genre != '' and author != '' and ph != '':
-            self.facade.insert_book(title_book, cost_book, genre, author, ph)
+            self.facade.insert_book(title_book, year, lists, cost_book, genre, author, ph)
         self.updateTableBook()
         logging.log(logging.INFO, 'Добавлены данные в таблицу "Книга"')
 
@@ -315,7 +317,7 @@ class MainWindow(QMainWindow):
         data = self.get_from_table_book()
         for string in data:
             if string[1] != '':
-                self.facade.update_book(int(string[0]), string[1], string[2], string[3], string[4], string[5])
+                self.facade.update_book(int(string[0]), string[1], string[2], string[3], string[4], string[5], string[6], string[7])
             else:
                 self.facade.delete_book(int(string[0]))
         self.updateTableBook()
@@ -602,11 +604,8 @@ class MainWindow(QMainWindow):
         client_title = QListWidgetItem("Клиент:")
         client = QListWidgetItem(self.comboBox_clients.currentText())
         cl1 = self.comboBox_clients.currentText()
-        cl2 = self.facade.get_id_client(cl1)
-        client_code = QListWidgetItem(cl2)
-
-        number_title = QListWidgetItem("Номер заказа:")
-        number = str(cl2) + '/' + str(self.date_req)
+        self.cl2 = self.facade.get_id_client(cl1)
+        client_code = QListWidgetItem(self.cl2)
 
         book_title = QListWidgetItem("Книга:")
         book = QListWidgetItem(self.comboBox_book.currentText())
@@ -614,17 +613,20 @@ class MainWindow(QMainWindow):
         date_req_title = QListWidgetItem("Дата создания:")
         time_req_title = QListWidgetItem("Время заказа:")
         date_now = datetime.datetime.now()
-        date_req = str(date_now.strftime("%Y.%m.%d"))
-        time_req = str(date_now.strftime("%H:%M"))
+        self.date_req = str(date_now.strftime("%Y.%m.%d"))
+        self.time_req = str(date_now.strftime("%H:%M"))
+
+        number_title = QListWidgetItem("Номер заказа:")
+        number = str(self.cl2) + '/' + str(self.date_req)
 
         self.add_new_field.clear()
-        if self.client != '' and self.book != '':
+        if client != '' and book != '':
             self.add_new_field.addItem(number_title)
             self.add_new_field.addItem(number)
             self.add_new_field.addItem(date_req_title)
-            self.add_new_field.addItem(date_req)
+            self.add_new_field.addItem(self.date_req)
             self.add_new_field.addItem(time_req_title)
-            self.add_new_field.addItem(time_req)
+            self.add_new_field.addItem(self.time_req)
             self.add_new_field.addItem(client_title)
             self.add_new_field.addItem(client_code)
             self.add_new_field.addItem(client)
@@ -682,7 +684,7 @@ class MainWindow(QMainWindow):
             EAN13 = barcode.get_barcode_class('code39')
             EAN13(str(100000902922), writer=ImageWriter()).write(rv)
 
-            temp = str(self.spin_num_order.value()) + str(self.date_req) + str(self.time_req)
+            temp = str(self.cl2) + str(self.date_req) + str(self.time_req)
             temp_middle = temp.replace(".", "")
             temp_end = temp_middle.replace(":", "")
 
@@ -1170,6 +1172,7 @@ class DialogAuth(QDialog):
                     logging.log(logging.INFO, 'Авторизован пользователь "Администратор"')
                 self.parent().show()
                 self.parent().ui.lbl_photo.setPixmap(pix)
+                self.parent().ui.lbl_fio.setText(fio)
                 self.parent().now_login = auth_log
                 self.parent().emp = id_emp
                 self.close()

@@ -37,8 +37,8 @@ class Facade:
     def insert_ph(self, name):
         self.db.insert_ph(name)
 
-    def insert_book(self, name, cost, genre, author, ph):
-        self.db.insert_book(name, cost, genre, author, ph)
+    def insert_book(self, name, year, lists, cost, genre, author, ph):
+        self.db.insert_book(name, year, lists, cost, genre, author, ph)
 
     def insert_time_entry(self, login, time, success):
         self.db.insert_time_entry(login, time, success)
@@ -57,8 +57,8 @@ class Facade:
     def update_ph(self, id, ph):
         self.db.update_ph(id, ph)
 
-    def update_book(self, id, name, cost, genre, author, ph):
-        self.db.update_book(id, name, cost, genre, author, ph)
+    def update_book(self, id, name, year, lists, cost, genre, author, ph):
+        self.db.update_book(id, name, year, lists, cost, genre, author, ph)
 
 # DELETE
 
