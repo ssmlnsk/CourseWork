@@ -1,26 +1,22 @@
+import datetime
+import logging
+import random
+import sys
+import time
 from io import BytesIO
 
 import barcode
-from barcode.writer import ImageWriter
 import img2pdf
+from PyQt5 import QtWidgets
+from PyQt5 import uic, QtGui
+from PyQt5.QtCore import Qt
+from PyQt5.QtGui import QFont, QPixmap
+from PyQt5.QtWidgets import QGraphicsScene, QListWidgetItem, QAction
+from PyQt5.QtWidgets import QMainWindow, QApplication, QTableWidgetItem, QDialog
+from PyQt5.QtWidgets import QMessageBox
+from barcode.writer import ImageWriter
 
 from facade import Facade
-import random
-
-from PyQt5.QtGui import QFont, QPixmap
-from PyQt5 import QtWidgets
-from PyQt5 import uic, QtCore, QtGui
-from PyQt5.QtCore import Qt, QTimer, QTime, QDateTime
-from PyQt5.QtWidgets import QGraphicsScene, QListWidgetItem, QAction
-from PyQt5.QtWidgets import QMainWindow, QApplication, QTableWidget, QTableWidgetItem, QDialog
-
-import sys
-import time
-import datetime
-
-import logging
-
-from PyQt5.QtWidgets import QMessageBox
 
 logging.basicConfig(level=logging.INFO)
 
@@ -920,8 +916,9 @@ class MainWindow(QMainWindow):
             logging.log(logging.INFO, 'Сгенерирован отчёт "Количество проданных книг по дням за период времени" в pdf-формате')
 
         elif type == 2:
-            pdf.cell(200, -20, txt="Отчёт по кол-ву заказов по каждой книге", ln=1, align="C")
-            pdf.set_font('Calibri Regular', style=b, size=14)
+            pdf.set_font('Calibri Regular', size=14)
+            pdf.cell(200, -20, txt="Отчёт по количеству заказов по дням за период времени по каждой книге", ln=1, align="C")
+            pdf.set_font('Calibri Regular', size=14)
             pdf.text(x, y, 'Дата')
             pdf.text(x + 60, y, 'Книга')
             pdf.text(x + 120, y, 'Кол-во проданных книг')
@@ -937,6 +934,7 @@ class MainWindow(QMainWindow):
                         pdf.text(x + 60, y, 'Книга')
                         pdf.text(x + 120, y, 'Кол-во проданных книг')
                         y += 10
+                    pdf.set_font('Calibri Regular', size=14)
                     book_name = self.facade.get_book_name(book)
                     pdf.text(x + 60, y, str(book_name[1:-1]))
                     pdf.text(x + 123, y, str(data[d][book]))
