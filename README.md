@@ -39,7 +39,7 @@
   
   6.	Указать путь к файлу *"Python.exe"*. Пример:
    
->C:\Users\*имя пользователя*\AppData\Local\Programs\Python\Python39\python.exe
+>C:\Users\имя пользователя\AppData\Local\Programs\Python\Python39\python.exe
   
   После добавления интерпретатора, необходимо добавить пакеты, нажав на кнопку "![image](https://user-images.githubusercontent.com/70947811/217788595-89b3f5d0-fa92-4f94-840c-9bd7de748085.png)":
   
