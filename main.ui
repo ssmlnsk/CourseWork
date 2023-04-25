@@ -140,7 +140,7 @@
          <string notr="true">font: &quot;Comic Sans MS&quot;;</string>
         </property>
         <property name="currentIndex">
-         <number>5</number>
+         <number>11</number>
         </property>
         <widget class="QWidget" name="page_1_for_all">
          <layout class="QVBoxLayout" name="verticalLayout_3">
@@ -1720,6 +1720,480 @@ color: rgb(255, 255, 255);</string>
             </item>
             <item>
              <spacer name="horizontalSpacer_27">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>40</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+           </layout>
+          </item>
+         </layout>
+        </widget>
+        <widget class="QWidget" name="page_4">
+         <layout class="QVBoxLayout" name="verticalLayout_21">
+          <item>
+           <layout class="QVBoxLayout" name="verticalLayout_20">
+            <item>
+             <layout class="QHBoxLayout" name="horizontalLayout_34">
+              <item>
+               <widget class="QLabel" name="label_30">
+                <property name="styleSheet">
+                 <string notr="true">font: 11pt &quot;Comic Sans MS&quot;;</string>
+                </property>
+                <property name="text">
+                 <string>Заявка на поставку книг</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </item>
+            <item>
+             <layout class="QVBoxLayout" name="verticalLayout_25">
+              <item>
+               <layout class="QHBoxLayout" name="horizontalLayout_38" stretch="0,100">
+                <item>
+                 <widget class="QLabel" name="label_33">
+                  <property name="styleSheet">
+                   <string notr="true">background-color: rgb(216, 0, 4);
+color: rgb(255, 255, 255);
+font: 9pt &quot;Comic Sans MS&quot;;</string>
+                  </property>
+                  <property name="text">
+                   <string>Поставщик: </string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QComboBox" name="comboProvider"/>
+                </item>
+               </layout>
+              </item>
+              <item>
+               <layout class="QHBoxLayout" name="horizontalLayout_36" stretch="0,100">
+                <item>
+                 <widget class="QLabel" name="label_32">
+                  <property name="styleSheet">
+                   <string notr="true">background-color: rgb(216, 0, 4);
+color: rgb(255, 255, 255);
+font: 9pt &quot;Comic Sans MS&quot;;</string>
+                  </property>
+                  <property name="text">
+                   <string>Книга: </string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QComboBox" name="comboBookProvider"/>
+                </item>
+               </layout>
+              </item>
+              <item>
+               <layout class="QHBoxLayout" name="horizontalLayout_35" stretch="0,100">
+                <item>
+                 <widget class="QLabel" name="label_31">
+                  <property name="styleSheet">
+                   <string notr="true">background-color: rgb(216, 0, 4);
+color: rgb(255, 255, 255);
+font: 9pt &quot;Comic Sans MS&quot;;</string>
+                  </property>
+                  <property name="text">
+                   <string>Количество книг: </string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QSpinBox" name="spinBoxQuantityBook"/>
+                </item>
+               </layout>
+              </item>
+             </layout>
+            </item>
+            <item>
+             <widget class="QListView" name="listViewDelivery"/>
+            </item>
+            <item>
+             <layout class="QHBoxLayout" name="horizontalLayout_39">
+              <item>
+               <spacer name="horizontalSpacer_31">
+                <property name="orientation">
+                 <enum>Qt::Horizontal</enum>
+                </property>
+                <property name="sizeHint" stdset="0">
+                 <size>
+                  <width>40</width>
+                  <height>20</height>
+                 </size>
+                </property>
+               </spacer>
+              </item>
+              <item>
+               <widget class="QPushButton" name="btn_send">
+                <property name="styleSheet">
+                 <string notr="true">background-color: rgb(143, 0, 2);
+font: 9pt &quot;Comic Sans MS&quot;;
+color: rgb(255, 255, 255);</string>
+                </property>
+                <property name="text">
+                 <string>   Отправить   </string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <spacer name="horizontalSpacer_32">
+                <property name="orientation">
+                 <enum>Qt::Horizontal</enum>
+                </property>
+                <property name="sizeHint" stdset="0">
+                 <size>
+                  <width>40</width>
+                  <height>20</height>
+                 </size>
+                </property>
+               </spacer>
+              </item>
+              <item>
+               <widget class="QPushButton" name="btn_all_prov">
+                <property name="styleSheet">
+                 <string notr="true">background-color: rgb(143, 0, 2);
+font: 9pt &quot;Comic Sans MS&quot;;
+color: rgb(255, 255, 255);</string>
+                </property>
+                <property name="text">
+                 <string> Все поставщики </string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <spacer name="horizontalSpacer_38">
+                <property name="orientation">
+                 <enum>Qt::Horizontal</enum>
+                </property>
+                <property name="sizeHint" stdset="0">
+                 <size>
+                  <width>40</width>
+                  <height>20</height>
+                 </size>
+                </property>
+               </spacer>
+              </item>
+              <item>
+               <widget class="QPushButton" name="btn_all_pr_od">
+                <property name="styleSheet">
+                 <string notr="true">background-color: rgb(143, 0, 2);
+font: 9pt &quot;Comic Sans MS&quot;;
+color: rgb(255, 255, 255);</string>
+                </property>
+                <property name="text">
+                 <string> Все заявки </string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <spacer name="horizontalSpacer_37">
+                <property name="orientation">
+                 <enum>Qt::Horizontal</enum>
+                </property>
+                <property name="sizeHint" stdset="0">
+                 <size>
+                  <width>40</width>
+                  <height>20</height>
+                 </size>
+                </property>
+               </spacer>
+              </item>
+             </layout>
+            </item>
+           </layout>
+          </item>
+         </layout>
+        </widget>
+        <widget class="QWidget" name="page_5">
+         <layout class="QVBoxLayout" name="verticalLayout_27">
+          <item>
+           <layout class="QVBoxLayout" name="verticalLayout_26">
+            <item>
+             <widget class="QLabel" name="label_34">
+              <property name="styleSheet">
+               <string notr="true">font: 11pt &quot;Comic Sans MS&quot;;</string>
+              </property>
+              <property name="text">
+               <string>Редактирование поставщиков</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignCenter</set>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <layout class="QVBoxLayout" name="verticalLayout_28">
+            <item>
+             <layout class="QHBoxLayout" name="horizontalLayout_44">
+              <item>
+               <widget class="QLabel" name="label_37">
+                <property name="styleSheet">
+                 <string notr="true">background-color: rgb(216, 0, 4);
+color: rgb(255, 255, 255);
+font: 9pt &quot;Comic Sans MS&quot;;</string>
+                </property>
+                <property name="text">
+                 <string>Наименование компании: </string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QLineEdit" name="lineEdit_2"/>
+              </item>
+             </layout>
+            </item>
+            <item>
+             <layout class="QHBoxLayout" name="horizontalLayout_43">
+              <item>
+               <widget class="QLabel" name="label_36">
+                <property name="styleSheet">
+                 <string notr="true">background-color: rgb(216, 0, 4);
+color: rgb(255, 255, 255);
+font: 9pt &quot;Comic Sans MS&quot;;</string>
+                </property>
+                <property name="text">
+                 <string>Юридический адрес: </string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QLineEdit" name="lineEdit_3"/>
+              </item>
+             </layout>
+            </item>
+            <item>
+             <layout class="QHBoxLayout" name="horizontalLayout_40">
+              <item>
+               <widget class="QLabel" name="label_35">
+                <property name="styleSheet">
+                 <string notr="true">background-color: rgb(216, 0, 4);
+color: rgb(255, 255, 255);
+font: 9pt &quot;Comic Sans MS&quot;;</string>
+                </property>
+                <property name="text">
+                 <string>Номер телефона: </string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QLineEdit" name="lineEdit"/>
+              </item>
+             </layout>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <widget class="QTableWidget" name="table_provider"/>
+          </item>
+          <item>
+           <layout class="QHBoxLayout" name="horizontalLayout_45">
+            <item>
+             <spacer name="horizontalSpacer_33">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>40</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+            <item>
+             <widget class="QPushButton" name="btn_add_prov">
+              <property name="styleSheet">
+               <string notr="true">background-color: rgb(143, 0, 2);
+font: 9pt &quot;Comic Sans MS&quot;;
+color: rgb(255, 255, 255);</string>
+              </property>
+              <property name="text">
+               <string> Добавить </string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <spacer name="horizontalSpacer_34">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>40</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+            <item>
+             <widget class="QPushButton" name="btn_del_prov">
+              <property name="styleSheet">
+               <string notr="true">background-color: rgb(143, 0, 2);
+font: 9pt &quot;Comic Sans MS&quot;;
+color: rgb(255, 255, 255);</string>
+              </property>
+              <property name="text">
+               <string> Удалить </string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <spacer name="horizontalSpacer_35">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>40</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+            <item>
+             <widget class="QPushButton" name="btn_save_prov">
+              <property name="styleSheet">
+               <string notr="true">background-color: rgb(143, 0, 2);
+font: 9pt &quot;Comic Sans MS&quot;;
+color: rgb(255, 255, 255);</string>
+              </property>
+              <property name="text">
+               <string> Сохранить </string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <spacer name="horizontalSpacer_36">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>40</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+           </layout>
+          </item>
+         </layout>
+        </widget>
+        <widget class="QWidget" name="page_6">
+         <layout class="QVBoxLayout" name="verticalLayout_30">
+          <item>
+           <layout class="QHBoxLayout" name="horizontalLayout_46">
+            <item>
+             <widget class="QLabel" name="label_38">
+              <property name="styleSheet">
+               <string notr="true">font: 11pt &quot;Comic Sans MS&quot;;</string>
+              </property>
+              <property name="text">
+               <string>Просмотр заявок</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignCenter</set>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <widget class="QTableWidget" name="table_pr_od"/>
+          </item>
+          <item>
+           <layout class="QHBoxLayout" name="horizontalLayout_47">
+            <item>
+             <spacer name="horizontalSpacer_39">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>40</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+            <item>
+             <widget class="QPushButton" name="btn_add_pr_od">
+              <property name="styleSheet">
+               <string notr="true">background-color: rgb(143, 0, 2);
+font: 9pt &quot;Comic Sans MS&quot;;
+color: rgb(255, 255, 255);</string>
+              </property>
+              <property name="text">
+               <string> Добавить </string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <spacer name="horizontalSpacer_42">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>40</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+            <item>
+             <widget class="QPushButton" name="btn_delete_pr_od">
+              <property name="styleSheet">
+               <string notr="true">background-color: rgb(143, 0, 2);
+font: 9pt &quot;Comic Sans MS&quot;;
+color: rgb(255, 255, 255);</string>
+              </property>
+              <property name="text">
+               <string> Удалить </string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <spacer name="horizontalSpacer_40">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>40</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+            <item>
+             <widget class="QPushButton" name="btn_save_pr_od">
+              <property name="styleSheet">
+               <string notr="true">background-color: rgb(143, 0, 2);
+font: 9pt &quot;Comic Sans MS&quot;;
+color: rgb(255, 255, 255);</string>
+              </property>
+              <property name="text">
+               <string> Сохранить </string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <spacer name="horizontalSpacer_41">
               <property name="orientation">
                <enum>Qt::Horizontal</enum>
               </property>

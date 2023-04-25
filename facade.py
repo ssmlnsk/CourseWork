@@ -40,6 +40,9 @@ class Facade:
     def insert_book(self, name, year, lists, cost, genre, author, ph):
         self.db.insert_book(name, year, lists, cost, genre, author, ph)
 
+    def insert_provider(self):
+        self.db.insert_provider(name, address, phone)
+
     def insert_time_entry(self, login, time, success):
         self.db.insert_time_entry(login, time, success)
 
@@ -60,6 +63,9 @@ class Facade:
     def update_book(self, id, name, year, lists, cost, genre, author, ph):
         self.db.update_book(id, name, year, lists, cost, genre, author, ph)
 
+    def update_provider(self, id, name, address, phone):
+        self.db.update_provider(id, name, address, phone)
+
 # DELETE
 
     def delete_genre(self, id):
@@ -73,6 +79,9 @@ class Facade:
 
     def delete_book(self, id):
         self.db.delete_book(id)
+
+    def delete_provider(self, id):
+        self.db.delete_provider(id)
 
 # SELECT ALL
 
@@ -93,6 +102,9 @@ class Facade:
 
     def read_history(self):
         return self.db.select_history()
+
+    def read_provider(self):
+        return self.db.select_providers()
 
     def get_data_book(self):
         return self.db.get_data_book()
@@ -117,6 +129,9 @@ class Facade:
     def get_book_name(self, id):
         return self.db.get_book_name(id)
 
+    def get_provider_name(self, id):
+        return self.db.get_provider_name(id)
+
 # SELECT ID
 
     def get_id_client(self, cl):
@@ -136,3 +151,6 @@ class Facade:
 
     def get_book_id(self, name):
         return self.db.get_book_id(name)
+
+    def get_provider_id(self, name):
+        return self.db.get_provider_id(name)

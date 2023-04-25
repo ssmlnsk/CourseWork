@@ -559,6 +559,7 @@ class MainWindow(QMainWindow):
         """
         books = self.facade.get_books()
         self.comboBox_book.clear()
+        self.comboBookProvider.clear()
         if self.comboBox_book is not None:
             self.comboBox_book.addItems(books)
         logging.log(logging.INFO, 'Combo Box "Книги" обновлён')
@@ -591,6 +592,16 @@ class MainWindow(QMainWindow):
         self.comboBox_ph.clear()
         if self.comboBox_ph is not None:
             self.comboBox_ph.addItems(ph)
+        logging.log(logging.INFO, 'Combo Box "Издательства" обновлён')
+
+    def build_combobox_provider(self):
+        """
+        Добавление списка издательств в Combo Box.
+        """
+        provider = self.facade.get_provider_name()
+        self.comboProvider.clear()
+        if self.comboProvider is not None:
+            self.comboProvider.addItems(provider)
         logging.log(logging.INFO, 'Combo Box "Издательства" обновлён')
 
     def add_new_request(self):

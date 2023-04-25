@@ -114,6 +114,16 @@ class Database:
         cursor.execute(f"INSERT INTO history VALUES (NULL, NULL, %s, %s, %s)", (time, block, login))
         self.conn.commit()
 
+    def insert_provider(self, name, address, phone):
+        cursor = self.conn.cursor()
+        cursor.execute(f"INSERT INTO provider VALUES (NULL, %s, %s, %s)", (name, address, phone))
+        self.conn.commit()
+
+    def insert_delivery(self, provider, book, quanity, cost):
+        cursor = self.conn.cursor()
+        cursor.execute(f"INSERT INTO delivery VALUES (NULL, %s, %s, %s, %s)", (provider, book, quanity, cost))
+        self.conn.commit()
+
 
 # UPDATE
 
@@ -169,6 +179,11 @@ class Database:
         cursor.execute(
             f"UPDATE books set `Наименование книги`='{name}', `Год издания`='{year}', `Количество страниц`='{lists}', "
             f"`Стоимость`='{cost}', `Жанр`='{genre}', `Автор`='{author}', `Издательство`='{ph}' WHERE 'Код книги'='{id}'")
+        self.conn.commit()
+
+    def update_provider(self, id, name, address, phone):
+        cursor = self.conn.cursor()
+        cursor.execute(f"UPDATE provider set `Наименование компании`='{name}', `Юридический адрес`='{address}', `Номер телефона`='{phone}' WHERE 'Код поставщика'='{id}'")
         self.conn.commit()
 
 # DELETE
@@ -228,6 +243,13 @@ class Database:
         cursor.execute(f"SET FOREIGN_KEY_CHECKS=1")
         self.conn.commit()
 
+    def delete_provider(self, id):
+        cursor = self.conn.cursor()
+        cursor.execute(f"SET FOREIGN_KEY_CHECKS=0")
+        cursor.execute(f"DELETE FROM provider WHERE `Код поставщика`='{id}'")
+        cursor.execute(f"SET FOREIGN_KEY_CHECKS=1")
+        self.conn.commit()
+
 # SELECT
 
     def select_clients(self):
@@ -279,6 +301,12 @@ class Database:
         cursor.execute(f"SELECT * FROM books")
         books = cursor.fetchall()
         return books
+
+    def select_providers(self):
+        cursor = self.conn.cursor()
+        cursor.execute(f"SELECT * FROM provider")
+        providers = cursor.fetchall()
+        return providers
 
     def select_history(self):
         """
@@ -491,3 +519,13 @@ class Database:
         cursor.execute(f"SELECT `Наименование книги` FROM books WHERE `Код книги`='{code}'")
         name = str(cursor.fetchone())
         return name[1:-2]
+
+    def get_provider_id(self):
+        cursor = self.conn.cursor(buffered=True)
+        cursor.execute(f"SELECT `Код поставщика` FROM provider WHERE `Наименование компании`='{name}'")
+        code = str(cursor.fetchone())
+        return code[1:-2]
+
+    def get_provider_name(self, code):
+        cursor = self.conn.cursor()
+        cursor.execute(f"SELECT `Наименование компании` FROM provider WHERE `Код поставщика`='{code}'")
